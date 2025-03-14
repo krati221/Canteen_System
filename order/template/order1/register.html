@@ -1,0 +1,197 @@
+{% extends 'base/base.html' %}
+{% load static %}  <!-- Add this line -->
+{% block title %}Register Here{% endblock title %}
+{% block maincontent %}
+
+<!-- Custom CSS to style the registration page -->
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/food_pic/food-healthy-creative-1128678.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(2px); /* Adjust the blur intensity */
+        z-index: -1; /* Keep the background behind the content */
+    }
+    
+    .register-container {
+        height: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+    }
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .register-container {
+            flex-direction: column; /* Stack elements vertically */
+            padding: 10px; /* Reduce padding for small devices */
+            height: auto; /* Allow the container to grow based on content */
+        }
+        .register-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 7px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+    }
+    .register-card {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 2px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        animation: fadeIn 1s ease-in-out;
+        background-color: hsl(24deg 50.72% 86.47% / 67%);
+    }
+
+    input[type="submit"] {
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+        color: #28a745;
+        margin-bottom: 1.5rem;
+        animation: slideDown 1s ease-in-out;
+    }
+
+    .alert {
+        font-size: 0.9rem;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    form input {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        width: 100%;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+    }
+
+    form input:focus {
+        border-color: #28a745;
+    }
+
+    .password-wrapper {
+        position: relative;
+    }
+
+    .password-wrapper input {
+        padding-right: 2.5rem;
+    }
+
+    .password-wrapper .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+    .password-wrapper .toggle-password:hover {
+        color: #28a745;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .logo-container {
+        margin-inline: auto;
+    }
+</style>
+
+<!-- Registration page structure -->
+<div class="register-container">
+    <div class="register-card">
+        <a class="navbar-brand fs-2" href="/">
+            <div class="logo-container">
+                <img src="{% static '../food_pic/college.webp' %}" alt="College Logo">
+            </div>
+        </a>
+        <h1>Registration</h1>
+        <!-- Display alert messages if any -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Registration Form -->
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</div>
+
+<!-- Include FontAwesome for the eye icon -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<!-- JavaScript for toggling password visibility -->
+<script>
+    const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const passwordField = document.querySelector(this.getAttribute('data-target'));
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+    });
+</script>
+
+{% endblock maincontent %}
