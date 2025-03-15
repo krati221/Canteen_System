@@ -41,20 +41,20 @@ Community Satisfaction: By providing high-quality food and a modern ordering exp
 Conclusion: By implementing an online canteen for the college, we can revolutionize the dining experience, providing students, staff, and local residents with a faster, more convenient way to order meals. This platform will not only boost the canteen’s operations but also enhance the overall quality of campus life. The future of college dining is here – faster, smarter, and tailored to everyone’s needs.
 
 Backend:
-Programming language  : Java 
-Framework                     : Spring Boot 
-Database                         : MySQL 
-Architecture                    : Service-Oriented Architecture (SOA)
-APIs                                 : RESTful APIs back-end 
+        Programming language  : Java 
+        Framework             : Spring Boot 
+        Database              : MySQL 
+        Architecture          : Service-Oriented Architecture (SOA)
+        APIs                  : RESTful APIs back-end 
 
 Front-end: 
-Programming Language  : JavaScript
-Markup Language           : HTML 
-Styling Language             : CSS3
-Responsive Design           : Media Querie 
-Interactive Elements        : JavaScript (node framework if required)
+        Programming Language      : JavaScript
+        Markup Language           : HTML 
+        Styling Language          : CSS3
+        Responsive Design         : Media Querie 
+        Interactive Elements      : JavaScript (node framework if required)
 
 Programming Language  :JavaScript
-Framework                       :React or Angular
-UI Library: Material       :UI or Bootstrap
-API Consumption            :RESTful APIs
+Framework             :React or Angular
+UI Library: Material  :UI or Bootstrap
+API Consumption       :RESTful APIs
